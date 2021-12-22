@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  database:
+    image: 'mongo'
+    restart: always
+    container_name: 'mongo_db'
+    environment:
+      - MONGO_INITDB_DATABASENAME=leoro
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=example
+    volumes:
+      - ./mongo-volume:/data/db
+    ports:
+      - '27017-27019:27017-27019'
