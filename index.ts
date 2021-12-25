@@ -1,10 +1,11 @@
 import express from 'express';
-import mongoose from "mongoose"
+import mongoose from 'mongoose';
 import dotenv from 'dotenv'
+import bodyParser from 'body-parser';
 import { errorHandler, errorNotFoundHandler } from "./src/middlewares/errorHandler";
 import { index } from "./src/routes"
 import { products } from "./src/routes/products"
-import bodyParser from 'body-parser';
+import { User } from './src/models/users';
 // rest of the code remains same
 const app = express();
 const PORT = 3000;
@@ -19,6 +20,8 @@ app.use('/products', products)
 
 app.use(errorNotFoundHandler);
 app.use(errorHandler);
+
+
 
 mongoose.connect("mongodb://root:example@localhost", () => {
   console.log('connected to db')
