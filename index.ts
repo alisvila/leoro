@@ -6,7 +6,7 @@ import { Request, Response, NextFunction } from 'express';
 import { errorHandler, errorNotFoundHandler } from "./src/middlewares/errorHandler";
 import { index } from "./src/routes"
 import { products } from "./src/routes/products"
-import { User } from './src/models/users';
+import { users }  from "./src/routes/users"
 
 // rest of the code remains same
 const app = express();
@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', index)
 app.use('/products', products)
+app.use('/users', users)
 
 app.use(errorNotFoundHandler);
 app.use(errorHandler);
