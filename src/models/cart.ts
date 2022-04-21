@@ -1,19 +1,20 @@
 import { ObjectId } from 'mongodb';
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { ICart } from "."
 
-const cartModel = new mongoose.Schema({
-    items: [
-        {
-            quantity: {
-                type: Number,
-                required: true
-            },
-            product: {
-                type: ObjectId,
-                ref: 'Product'
-            }
-        }
-    ]
+const cartModel = new Schema<ICart>({
+  items: [
+    {
+      quantity: {
+        type: Number,
+        required: true
+      },
+      product: {
+        type: ObjectId,
+        ref: 'Product'
+      }
+    }
+  ]
 })
 
-export const cart = mongoose.model('Cart', cartModel)
+export default model<ICart>('Cart', cartModel)
