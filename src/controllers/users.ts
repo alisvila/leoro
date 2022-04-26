@@ -13,6 +13,13 @@ export const createUser = async (req:Request, res:Response, next:NextFunction) =
         username: req.body.username,
         password: hashedPassword
     })
-    const savedUser = await user.save()
-    res.json(savedUser).status(201)
+    const savedUser = await user.save((err: any) => {
+        if (err) {
+            if (err.code===11000 ) {
+                return res.status(500).send({ succes: false, message: 'User already exist!' })
+            }
+            return res.status(500).send(err)
+        }
+        res.json(savedUser).status(201)
+    })
 }

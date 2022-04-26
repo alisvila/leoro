@@ -2,7 +2,12 @@ import { ObjectId } from 'mongodb';
 import { Schema, model } from 'mongoose';
 import { ICart } from "."
 
-const cartModel = new Schema<ICart>({
+const cartModel = new Schema<ICart>(
+  {
+    // user: {
+    //   type: ObjectId,
+    //   ref: "User",
+    // },
   items: [
     {
       quantity: {
@@ -15,6 +20,10 @@ const cartModel = new Schema<ICart>({
       }
     }
   ]
-})
+},
+{
+  timestamps: true,
+}
+);
 
 export default model<ICart>('Cart', cartModel)
