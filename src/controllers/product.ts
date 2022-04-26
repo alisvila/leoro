@@ -1,4 +1,4 @@
-import { Product } from "../models/Products";
+import Product from "../models/Product";
 import { Response, Request, NextFunction } from "express";
 import APIFeatures from '../utils/ApiFeatures';
 

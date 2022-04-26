@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from "express";
 import * as bcrypt from 'bcrypt'
-import { User } from '../models/users'
+import User from '../models/User'
 
 export const getAllUsesrs = async (req:Request, res:Response, next:NextFunction) => {
     const allUsers = await User.find()
